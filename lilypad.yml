@@ -5,7 +5,7 @@
 # ===============================================================================
 
 # Should chat be sent over lillypad?
-lillypad: true
+enabled: true
 
 # How should cross-server messages be displayed?
 messageFormat: '&e%server &r%prefix%player%suffix&f:&r %message'

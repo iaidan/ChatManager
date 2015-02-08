@@ -22,7 +22,7 @@ public class CommandExe implements CommandExecutor {
 					sender.sendMessage(ChatColor.DARK_GREEN + "[ChatManager] Reloading...");
 					
 					javaplugin.saveDefaultConfig();
-					javaplugin.reloadConfig();
+					((Main) javaplugin).reload();
 					
 					sender.sendMessage(ChatColor.DARK_GREEN + "[Chatmanager] Done");
 				}

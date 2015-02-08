@@ -5,6 +5,7 @@ import net.aidantaylor.bukkit.chatmanager.listeners.ChatListener;
 import net.aidantaylor.bukkit.chatmanager.listeners.LilyListener;
 import net.aidantaylor.bukkit.core.Config;
 import net.milkbowl.vault.chat.Chat;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,26 +15,27 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Main extends JavaPlugin {
 	private boolean debug;
 	private ChatListener chat = null;
-	private LilyListener lily = null;
+	private Lily lily = null;
 	private Config lilyConfig;
+	private Connect connect;
+	private LilyListener lilyListener;
 	private static Main instance;
-	
-	public Main() {
-		setInstance(this);
-	}
 
 	@Override
 	public void onEnable() {
-		getCommand("chatmanager").setExecutor(new CommandExe());
+		setInstance(this);
 		
+		getCommand("chatmanager").setExecutor(new CommandExe());
+
 		if (getServer().getPluginManager().getPlugin("LilyPad-Connect") == null) {
-			log(getName() + " LilyPad-Connect was not found.", true);
+			log(getName() + " LilyPad-Connect was not found.", true);log("test8");
 		} else {
-	        Connect connect = Bukkit.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
+	        connect = Bukkit.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
 	        
-	        lily = new LilyListener(connect);
+	        lily = new Lily();
+	        lilyListener = new LilyListener(lily.getGlobalChannel());
 	        
-	        connect.registerEvents(lily);
+	        connect.registerEvents(lilyListener);
 		}
 
 		if (getServer().getPluginManager().getPlugin("Vault") == null) {
@@ -48,9 +50,9 @@ public final class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(chat, this);
 
 		saveDefaultConfig();
+		load();
 
 		log(getName() + " has been enabled!", true);
-		load();
 	}
 
 	@Override
@@ -103,13 +105,12 @@ public final class Main extends JavaPlugin {
 	
 	public void unload() {
 		if (lily != null) {
-			lily.getConnect().unregisterEvents(lily);
+			connect.unregisterEvents(lilyListener);
 		}
 	}
 	
-	@Override
-	public void reloadConfig() {
-		super.reloadConfig();
+	public void reload() {
+		reloadConfig();
 		
 		if (lilyConfig != null) {
 			lilyConfig.reloadConfig();
@@ -135,5 +136,13 @@ public final class Main extends JavaPlugin {
 
 	public void setInstance(Main instance) {
 		Main.instance = instance;
+	}
+
+	public Connect getConnect() {
+		return connect;
+	}
+
+	public void setConnect(Connect connect) {
+		this.connect = connect;
 	}
 }

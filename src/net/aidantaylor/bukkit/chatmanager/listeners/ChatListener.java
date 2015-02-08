@@ -3,7 +3,7 @@ package net.aidantaylor.bukkit.chatmanager.listeners;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.aidantaylor.bukkit.chatmanager.Main;
+import net.aidantaylor.bukkit.chatmanager.Lily;
 import net.aidantaylor.bukkit.core.Formatter;
 import net.milkbowl.vault.chat.Chat;
 
@@ -20,7 +20,7 @@ public class ChatListener implements Listener {
 	private Chat chat = null;
 	private double chatRange = 100;
 	private boolean ranged = false;
-	private LilyListener lily = null;
+	private Lily lily = null;
 	
 	public ChatListener(Chat chat) {
 		this.chat = chat;
@@ -77,7 +77,7 @@ public class ChatListener implements Listener {
         
         format = format.replace("%prefix", prefix)
         			   .replace("%world", player.getWorld().getName())
-        			   .replace("%player", player.getName())
+        			   .replace("%player", player.getDisplayName())
  			   		   .replace("%suffix", suffix);
         
         format = Formatter.translateCodes(Formatter.replaceTime(format));
@@ -158,11 +158,11 @@ public class ChatListener implements Listener {
 		this.ranged = ranged;
 	}
 
-	public LilyListener getLily() {
+	public Lily getLily() {
 		return lily;
 	}
 
-	public void setLily(LilyListener lily) {
+	public void setLily(Lily lily) {
 		this.lily = lily;
 	}
 }
