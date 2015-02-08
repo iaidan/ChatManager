@@ -28,7 +28,7 @@ public final class Main extends JavaPlugin {
 		getCommand("chatmanager").setExecutor(new CommandExe());
 
 		if (getServer().getPluginManager().getPlugin("LilyPad-Connect") == null) {
-			log(getName() + " LilyPad-Connect was not found.", true);log("test8");
+			log(getName() + " LilyPad-Connect was not found.", true);
 		} else {
 	        connect = Bukkit.getServer().getServicesManager().getRegistration(Connect.class).getProvider();
 	        
@@ -48,8 +48,7 @@ public final class Main extends JavaPlugin {
 		}
 		
 		getServer().getPluginManager().registerEvents(chat, this);
-
-		saveDefaultConfig();
+		
 		load();
 
 		log(getName() + " has been enabled!", true);
@@ -63,6 +62,7 @@ public final class Main extends JavaPlugin {
 	}
 
 	public void load() {
+		saveDefaultConfig();
 		getConfig().options().copyDefaults(true);
 		FileConfiguration configFile = getConfig();
 		
@@ -89,8 +89,8 @@ public final class Main extends JavaPlugin {
 		/* LilyPad config */
 		if (lily != null) {
 			lilyConfig = new Config("lilypad.yml", this);
-			lilyConfig.options().copyDefaults(true);
 			lilyConfig.saveDefaultConfig();
+			lilyConfig.options().copyDefaults(true);
 			
 			if (lilyConfig.getBoolean("enabled")) {
 				lily.setFormat(lilyConfig.getString("messageFormat"));

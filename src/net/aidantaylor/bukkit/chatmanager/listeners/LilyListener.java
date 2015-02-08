@@ -2,8 +2,6 @@ package net.aidantaylor.bukkit.chatmanager.listeners;
 
 import java.io.UnsupportedEncodingException;
 
-import net.aidantaylor.bukkit.chatmanager.Main;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -22,8 +20,6 @@ public class LilyListener {
         if (!event.getChannel().equalsIgnoreCase(globalChannel)) {
             return;
         }
-        
-        Main.getInstance().log("test2");
         
         try {
             String message = event.getMessageAsString();

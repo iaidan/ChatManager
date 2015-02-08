@@ -64,46 +64,46 @@ public class ChatListener implements Listener {
         
         event.setMessage(chatMessage);
         
-        /* Set format */
-        String format = messageFormat;
-        
-        String prefix = "";
-        String suffix = "";
-        
-        if (chat != null) {
-        	prefix = chat.getPlayerPrefix(player);
-        	suffix = chat.getPlayerPrefix(player);
-        }
-        
-        format = format.replace("%prefix", prefix)
-        			   .replace("%world", player.getWorld().getName())
-        			   .replace("%player", player.getDisplayName())
- 			   		   .replace("%suffix", suffix);
-        
-        format = Formatter.translateCodes(Formatter.replaceTime(format));
-		   
-        format = format.replace("%displayname", "%1$s").replace("%message", "%2$s");
-        
-        event.setFormat(format);
-        
         /* Send to other servers */
 		if (lily != null) {
-			format = format.replace("%2$s", "");
-			
 			try {
-				lily.sendMessage(format, chatMessage);
+				lily.sendMessage(chatMessage, player);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
 			event.getRecipients().clear();
-		} else if (ranged == true) {
-	        if (chatMessage.startsWith("!") && (player.hasPermission("chatmanager.ranged.override") || player.isOp())) {
-	        	chatMessage = chatMessage.substring(1);
+		} else {
+	        /* Set format */
+	        String format = messageFormat;
+	        
+	        String prefix = "";
+	        String suffix = "";
+	        
+	        if (chat != null) {
+	        	prefix = chat.getPlayerPrefix(player);
+	        	suffix = chat.getPlayerPrefix(player);
 	        }
-
-			event.getRecipients().clear();
-			event.getRecipients().addAll(getNear(player, chatMessage, chatRange));
+	        
+	        format = format.replace("%prefix", prefix)
+	        			   .replace("%world", player.getWorld().getName())
+	        			   .replace("%player", player.getDisplayName())
+	 			   		   .replace("%suffix", suffix);
+	        
+	        format = Formatter.translateCodes(Formatter.replaceTime(format));
+			   
+	        format = format.replace("%displayname", "%1$s").replace("%message", "%2$s");
+	        
+	        event.setFormat(format);
+			
+			if (ranged == true) {
+		        if (chatMessage.startsWith("!") && (player.hasPermission("chatmanager.ranged.override") || player.isOp())) {
+		        	chatMessage = chatMessage.substring(1);
+		        }
+	
+				event.getRecipients().clear();
+				event.getRecipients().addAll(getNear(player, chatMessage, chatRange));
+			}
 		}
     }
 
