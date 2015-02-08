@@ -70,6 +70,7 @@ public final class Main extends JavaPlugin {
             log("ChatManager is not enabled in your config.yml");
             
             getPluginLoader().disablePlugin(this);
+            return;
 		}
 		
 		debug = configFile.getBoolean("debug");
