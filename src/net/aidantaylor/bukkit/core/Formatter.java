@@ -4,15 +4,8 @@ import java.util.Calendar;
 import java.util.regex.Pattern;
 
 public class Formatter {
-	private static String specialChar = "\u00A7$1";
-	private static String replaceChar = "&";
-	protected static Pattern chatColourPattern = Pattern.compile("(?i)" + replaceChar + "([0-9A-F])");
-	protected static Pattern chatMagicPattern = Pattern.compile("(?i)" + replaceChar + "([K])");
-	protected static Pattern chatBoldPattern = Pattern.compile("(?i)" + replaceChar + "([L])");
-	protected static Pattern chatStrikethroughPattern = Pattern.compile("(?i)" + replaceChar + "([M])");
-	protected static Pattern chatUnderlinePattern = Pattern.compile("(?i)" + replaceChar + "([N])");
-	protected static Pattern chatItalicPattern = Pattern.compile("(?i)" + replaceChar + "([O])");
-	protected static Pattern chatResetPattern = Pattern.compile("(?i)" + replaceChar + "([R])");
+	public static String specialChar = "\u00A7";
+	public static String replaceChar = "&";
 
 	public static String translateCodes(String string) {
 		string = translateColourCodes(string);
@@ -23,28 +16,66 @@ public class Formatter {
 	}
 
 	public static String translateColourCodes(String string) {
+        return translateColourCodes(string, false);
+    }
+
+	public static String translateColourCodes(String string, boolean undo) {
+		if (undo == false) {
+        	string = Pattern.compile("(?i)" + replaceChar + "([0-9A-F])").matcher(string).replaceAll(specialChar + "$1");
+        	string = Pattern.compile("(?i)" + replaceChar + "([R])").matcher(string).replaceAll(specialChar + "$1");
+        	
+        	return string;
+		}
+		
         if (string != null) {
-        	string = chatColourPattern.matcher(string).replaceAll(specialChar);
+        	string = Pattern.compile("(?i)" + specialChar + "([0-9A-F])").matcher(string).replaceAll(replaceChar + "$1");
+        	string = Pattern.compile("(?i)" + specialChar + "([R])").matcher(string).replaceAll(replaceChar + "$1");
         }
         
         return string;
     }
 
 	public static String translateFormatCodes(String string) {
+        return translateFormatCodes(string, false);
+    }
+
+	public static String translateFormatCodes(String string, boolean undo) {
+		if (undo == false) {
+        	string = Pattern.compile("(?i)" + replaceChar + "([L])").matcher(string).replaceAll(specialChar + "$1");
+        	string = Pattern.compile("(?i)" + replaceChar + "([M])").matcher(string).replaceAll(specialChar + "$1");
+        	string = Pattern.compile("(?i)" + replaceChar + "([N])").matcher(string).replaceAll(specialChar + "$1");
+        	string = Pattern.compile("(?i)" + replaceChar + "([O])").matcher(string).replaceAll(specialChar + "$1");
+        	string = Pattern.compile("(?i)" + replaceChar + "([R])").matcher(string).replaceAll(specialChar + "$1");
+        	
+        	return string;
+		}
+		
         if (string != null) {
-        	string = chatBoldPattern.matcher(string).replaceAll(specialChar);
-        	string = chatStrikethroughPattern.matcher(string).replaceAll(specialChar);
-            string = chatUnderlinePattern.matcher(string).replaceAll(specialChar);
-            string = chatItalicPattern.matcher(string).replaceAll(specialChar);
-            string = chatResetPattern.matcher(string).replaceAll(specialChar);
+        	string = Pattern.compile("(?i)" + specialChar + "([L])").matcher(string).replaceAll(replaceChar + "$1");
+        	string = Pattern.compile("(?i)" + specialChar + "([M])").matcher(string).replaceAll(replaceChar + "$1");
+        	string = Pattern.compile("(?i)" + specialChar + "([N])").matcher(string).replaceAll(replaceChar + "$1");
+        	string = Pattern.compile("(?i)" + specialChar + "([O])").matcher(string).replaceAll(replaceChar + "$1");
+        	string = Pattern.compile("(?i)" + specialChar + "([R])").matcher(string).replaceAll(replaceChar + "$1");
         }
         
         return string;
     }
 
 	public static String translateMagicCode(String string) {
+        return translateMagicCode(string, false);
+    }
+
+	public static String translateMagicCode(String string, boolean undo) {
+		if (undo == false) {
+        	string = Pattern.compile("(?i)" + replaceChar + "([K])").matcher(string).replaceAll(specialChar + "$1");
+        	string = Pattern.compile("(?i)" + replaceChar + "([R])").matcher(string).replaceAll(specialChar + "$1");
+        	
+        	return string;
+		}
+		
         if (string != null) {
-        	string = chatMagicPattern.matcher(string).replaceAll(specialChar);
+        	string = Pattern.compile("(?i)" + specialChar + "([K])").matcher(string).replaceAll(replaceChar + "$1");
+        	string = Pattern.compile("(?i)" + specialChar + "([R])").matcher(string).replaceAll(replaceChar + "$1");
         }
         
         return string;

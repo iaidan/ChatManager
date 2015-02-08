@@ -9,3 +9,18 @@ commands:
       description: Main command for all 'chatmanager' commands
       aliases: [cm, chatm, cmanager]
 permissions:
+   chatmanager.chat:
+       description: Allows a player to talk in chat
+       default: true
+   chatmanager.chat.colour:
+       description: Allows players to do coloured chat
+       default: op
+   chatmanager.chat.format:
+       description: Allows players to do formatted chat
+       default: op
+   chatmanager.chat.magic:
+       description: Allows players to do magic chat
+       default: op
+   chatmanager.ranged.override:
+       description: allows a player to view chats past the ranged limit
+       default: op

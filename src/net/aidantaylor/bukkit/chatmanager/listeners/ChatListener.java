@@ -3,10 +3,12 @@ package net.aidantaylor.bukkit.chatmanager.listeners;
 import java.util.LinkedList;
 import java.util.List;
 
+import net.aidantaylor.bukkit.chatmanager.Main;
 import net.aidantaylor.bukkit.core.Formatter;
 import net.milkbowl.vault.chat.Chat;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -32,19 +34,32 @@ public class ChatListener implements Listener {
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         
+        if (!(player.hasPermission("chatmanager.chat") || player.isOp())) {
+        	player.sendMessage(ChatColor.RED + "You may not talk in chat!");
+        	
+        	event.setCancelled(true);
+        	return;
+        }
+        
         /* Format chat message*/
         String chatMessage = event.getMessage();
         
-        if (player.hasPermission("chatmanager.chat.colour")) {
+        if (player.hasPermission("chatmanager.chat.colour") || player.isOp()) {
         	chatMessage = Formatter.translateColourCodes(chatMessage);
+        } else {
+        	chatMessage = Formatter.translateColourCodes(chatMessage, true);
         }
         
-        if (player.hasPermission("chatmanager.chat.format")) {
+        if (player.hasPermission("chatmanager.chat.format") || player.isOp()) {
         	chatMessage = Formatter.translateFormatCodes(chatMessage);
+        } else {
+        	chatMessage = Formatter.translateFormatCodes(chatMessage, true);
         }
         
-        if (player.hasPermission("chatmanager.chat.magic")) {
+        if (player.hasPermission("chatmanager.chat.magic") || player.isOp()) {
         	chatMessage = Formatter.translateMagicCode(chatMessage);
+        } else {
+        	chatMessage = Formatter.translateMagicCode(chatMessage, true);
         }
         
         event.setMessage(chatMessage);
@@ -61,19 +76,19 @@ public class ChatListener implements Listener {
         }
         
         format = format.replace("%prefix", prefix)
- 			   		   .replace("%suffix", suffix)
         			   .replace("%world", player.getWorld().getName())
-        			   .replace("%player", player.getDisplayName())
-        			   .replace("%displayname", "%1$s")
-        			   .replace("%message", "%2$s");
+        			   .replace("%player", player.getName())
+ 			   		   .replace("%suffix", suffix);
         
         format = Formatter.translateCodes(Formatter.replaceTime(format));
+		   
+        format = format.replace("%displayname", "%1$s").replace("%message", "%2$s");
         
         event.setFormat(format);
         
         /* Send to other servers */
 		if (lily != null) {
-			chatMessage = chatMessage.replace("%2$s", "");
+			format = format.replace("%2$s", "");
 			
 			try {
 				lily.sendMessage(format, chatMessage);
@@ -101,7 +116,7 @@ public class ChatListener implements Listener {
                 continue;
             }
 
-            if (sender.getLocation().distanceSquared(p.getLocation()) > squaredDistance && !sender.hasPermission("chatmanager.ranged.override")) {
+            if (sender.getLocation().distanceSquared(p.getLocation()) > squaredDistance && !(sender.hasPermission("chatmanager.ranged.override") || sender.isOp())) {
                 continue;
             }
             
