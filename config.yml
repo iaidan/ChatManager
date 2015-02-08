@@ -1,0 +1,23 @@
+# ===============================================================================
+# Chat Manager
+# Author: mouseymars
+# Website: http://taylorcraft.net
+# ===============================================================================
+
+# Is chatmanager enabled or not?
+enable: true
+
+# How should messages be displayed?
+messageFormat: '%prefix%player%suffix&f:&r %message'
+
+# Ranged mode -  limits chat to a radius of blocks
+rangedMode:
+    # Should chat be limited to a range?
+    enabled: false
+    # Whats the range people can see others talk? (in blocks)
+    chatRange: 100.0
+    # What should range override messages look like?
+    overrideFormat: '&e%prefix%player%suffix&f:&r &e%message'
+
+# Debug mode
+debug: true

@@ -1,0 +1,14 @@
+# ===============================================================================
+# Chat Manager
+# Author: mouseymars
+# Website: http://taylorcraft.net
+# ===============================================================================
+
+# Should chat be sent over lillypad?
+lillypad: true
+
+# How should cross-server messages be displayed?
+messageFormat: '&e%server &r%prefix%player%suffix&f:&r %message'
+
+# What is the name of this server?
+serverName: 'Server'

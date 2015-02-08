@@ -1,0 +1,11 @@
+name: ChatManager
+version: 0.1.0
+author: mouseymars
+description: A simple plugin that allows you to manage your servers chat
+main: net.aidantaylor.bukkit.chatmanager.Main
+softdepend: [Vault, LilyPad-Connect]
+commands:
+   chatmanager:
+      description: Main command for all 'chatmanager' commands
+      aliases: [cm, chatm, cmanager]
+permissions:
