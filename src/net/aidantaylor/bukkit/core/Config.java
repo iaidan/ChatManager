@@ -46,6 +46,18 @@ public class Config extends YamlConfiguration {
 	    	e.printStackTrace();
 	    }
 	}
+	
+	public void save() {
+	    if (configFile == null) {
+	    	configFile = new File(plugin.getDataFolder(), filename);
+	    }
+	    
+		try {
+			super.save(configFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void saveDefaultConfig() {
 	    if (configFile == null) {

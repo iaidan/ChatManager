@@ -1,5 +1,7 @@
 package net.aidantaylor.bukkit.chatmanager;
 
+import net.aidantaylor.bukkit.chatmanager.Main;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
