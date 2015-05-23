@@ -7,11 +7,14 @@ softdepend: [Vault, LilyPad-Connect]
 commands:
    chatmanager:
       description: Main command for all 'chatmanager' commands
-      aliases: [cm, chatm, cmanager]
+      aliases: [cm, chatm, chat, cmanager]
 permissions:
    chatmanager.chat:
        description: Allows a player to talk in chat
        default: true
+   chatmanager.chat.override:
+       description: Allows players to talk when chat is restricted
+       default: op
    chatmanager.chat.colour:
        description: Allows players to do coloured chat
        default: op
@@ -23,4 +26,19 @@ permissions:
        default: op
    chatmanager.ranged.override:
        description: allows a player to view chats past the ranged limit
+       default: op
+   chatmanager.chat.hideshow:
+       description: Allows players to toggle if they see the chat
+       default: op
+   chatmanager.chat.ding:
+       description: Allows players to be notified when they're mentioned
+       default: op
+   chatmanager.chat.mode:
+       description: Allows players to change chat mode
+       default: op
+   chatmanager.chat.mode.on:
+       description: Allows players to turn the whole chat on and off
+       default: op
+   chatmanager.chat.mode.restricted:
+       description: Allows players to turn chat into restricted mode
        default: op

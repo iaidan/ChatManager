@@ -19,5 +19,11 @@ rangedMode:
     # What should range override messages look like?
     overrideFormat: '&e%prefix%player%suffix&f:&r &e%message'
 
+# Is the chat itsself enabled or not?
+chatEnable: true
+
+# Should only people with permission be able to talk?
+restricted: false
+
 # Debug mode
 debug: true

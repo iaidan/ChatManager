@@ -19,6 +19,9 @@ public final class Main extends JavaPlugin {
 	private Config lilyConfig;
 	private Connect connect;
 	private LilyListener lilyListener;
+	private Config playerConfig;
+	private ConfigurationSection players;
+	private FileConfiguration configFile;
 	private static Main instance;
 
 	@Override
@@ -64,7 +67,7 @@ public final class Main extends JavaPlugin {
 	public void load() {
 		saveDefaultConfig();
 		getConfig().options().copyDefaults(true);
-		FileConfiguration configFile = getConfig();
+		configFile = getConfig();
 		
 		if (configFile.getBoolean("enabled")) {
             log("ChatManager is not enabled in your config.yml");
@@ -76,6 +79,19 @@ public final class Main extends JavaPlugin {
 		debug = configFile.getBoolean("debug");
 		
 		chat.setFormat(configFile.getString("messageFormat"));
+		
+		if (configFile.getBoolean("restricted")) {
+			configFile.set("chatEnabled", true);
+			saveDefaultConfig();
+		}
+		
+		if (!configFile.getBoolean("chatEnabled")) {
+			configFile.set("restricted", false);
+			saveDefaultConfig();
+		}
+		
+		chat.setRestricted(configFile.getBoolean("restricted"));
+		chat.setChatEnabled(configFile.getBoolean("chatEnable"));
 		
 		/* Range mode config */
 		ConfigurationSection ranged = configFile.getConfigurationSection("rangedMode");
@@ -101,6 +117,17 @@ public final class Main extends JavaPlugin {
 			} else {
 				chat.setLily(null);
 			}
+		}
+		
+		/* Player config */
+		playerConfig = new Config("players.yml", this);
+		playerConfig.saveDefaultConfig();
+		playerConfig.options().copyDefaults(true);
+		
+		players = playerConfig.getConfigurationSection("players");
+		
+		if (players == null) {
+			players = playerConfig.createSection("players");
 		}
 	}
 	
@@ -145,5 +172,22 @@ public final class Main extends JavaPlugin {
 
 	public void setConnect(Connect connect) {
 		this.connect = connect;
+	}
+
+	public ConfigurationSection getPlayers() {
+		return players;
+	}
+
+	public void save() {
+		configFile.set("chatEnabled", chat.isChatEnabled());
+		configFile.set("restricted", chat.isRestricted());
+		
+		saveConfig();
+		playerConfig.save();
+		lilyConfig.save();
+	}
+
+	public ChatListener getChat() {
+		return chat;
 	}
 }

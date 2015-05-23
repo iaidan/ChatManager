@@ -1,13 +1,14 @@
 package net.aidantaylor.bukkit.chatmanager;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-import org.bukkit.entity.Player;
-
-import net.aidantaylor.bukkit.core.Formatter;
-import net.milkbowl.vault.chat.Chat;
 import lilypad.client.connect.api.request.RequestException;
 import lilypad.client.connect.api.request.impl.MessageRequest;
+import net.aidantaylor.bukkit.core.Formatter;
+import net.milkbowl.vault.chat.Chat;
+
+import org.bukkit.entity.Player;
 
 public class Lily {
 	private String messageFormat, serverName, globalChannel = "GlobalChat";
@@ -45,7 +46,7 @@ public class Lily {
     		   
             message = format.replace("%message", message);
             
-         	MessageRequest request = new MessageRequest("", globalChannel, message);
+         	MessageRequest request = new MessageRequest("", globalChannel, player.getName() + " " + URLEncoder.encode(message, "UTF-8"));
          	
             Main.getInstance().getConnect().request(request);
          } catch (UnsupportedEncodingException e) {

@@ -4,11 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import net.aidantaylor.bukkit.chatmanager.Lily;
+import net.aidantaylor.bukkit.chatmanager.Main;
 import net.aidantaylor.bukkit.core.Formatter;
 import net.milkbowl.vault.chat.Chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -20,6 +23,8 @@ public class ChatListener implements Listener {
 	private Chat chat = null;
 	private double chatRange = 100;
 	private boolean ranged = false;
+	private boolean chatEnabled = true;
+	private boolean restricted = false;
 	private Lily lily = null;
 	
 	public ChatListener(Chat chat) {
@@ -33,9 +38,30 @@ public class ChatListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
+		ConfigurationSection players = Main.getInstance().getPlayers();
+        
+		ConfigurationSection cp = players.getConfigurationSection(player.getUniqueId().toString());
+		
+		if (!(cp != null && cp.getBoolean("chatEnabled"))) {
+        	player.sendMessage(ChatColor.RED + "Your chat is currently disabled, do  " + ChatColor.DARK_RED + "/cm show" + ChatColor.RED + " to enable");
+		}
+		
+        if (!chatEnabled) {
+        	player.sendMessage(ChatColor.RED + "Chat is currently disabled.");
+        	
+        	event.setCancelled(true);
+        	return;
+        }
         
         if (!(player.hasPermission("chatmanager.chat") || player.isOp())) {
         	player.sendMessage(ChatColor.RED + "You may not talk in chat!");
+        	
+        	event.setCancelled(true);
+        	return;
+        }
+        
+        if (!(player.hasPermission("chatmanager.chat.override") || player.isOp()) && restricted) {
+        	player.sendMessage(ChatColor.RED + "You may not talk in chat, it is currently restricted to those with permission!");
         	
         	event.setCancelled(true);
         	return;
@@ -104,6 +130,21 @@ public class ChatListener implements Listener {
 				event.getRecipients().clear();
 				event.getRecipients().addAll(getNear(player, chatMessage, chatRange));
 			}
+			
+	        for (Player p : event.getRecipients()) {
+	        	try {
+		        	cp = players.getConfigurationSection(p.getUniqueId().toString());
+		        	
+		            if (player.getName() != p.getName() && chatMessage.toLowerCase().contains(p.getName().toLowerCase()) && cp.getBoolean("chatDing")) {
+		                p.playSound(p.getLocation(), Sound.ORB_PICKUP, 100, 7);
+		                chatMessage.replaceAll("(?i)" + p.getName(), ChatColor.ITALIC + p.getName() + ChatColor.RESET);
+		            }
+		            
+		        	if (!cp.getBoolean("chatEnabled")) {
+		        		event.getRecipients().remove(p);
+		        	}
+	        	} catch(Exception e) {}
+	        }
 		}
     }
 
@@ -164,5 +205,21 @@ public class ChatListener implements Listener {
 
 	public void setLily(Lily lily) {
 		this.lily = lily;
+	}
+
+	public boolean isChatEnabled() {
+		return chatEnabled;
+	}
+
+	public void setChatEnabled(boolean chatEnabled) {
+		this.chatEnabled = chatEnabled;
+	}
+
+	public boolean isRestricted() {
+		return restricted;
+	}
+
+	public void setRestricted(boolean restricted) {
+		this.restricted = restricted;
 	}
 }

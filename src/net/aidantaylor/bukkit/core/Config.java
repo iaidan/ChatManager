@@ -42,6 +42,8 @@ public class Config extends YamlConfiguration {
 		        
 		        setDefaults(defConfig);
 		    }
+		    
+		    defConfigStream.close();
 	    } catch(Exception e) {
 	    	e.printStackTrace();
 	    }
