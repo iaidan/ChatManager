@@ -42,8 +42,11 @@ public class ChatListener implements Listener {
         
 		ConfigurationSection cp = players.getConfigurationSection(player.getUniqueId().toString());
 		
-		if (!(cp != null && cp.getBoolean("chatEnabled"))) {
-        	player.sendMessage(ChatColor.RED + "Your chat is currently disabled, do  " + ChatColor.DARK_RED + "/cm show" + ChatColor.RED + " to enable");
+		if (cp != null && cp.getBoolean("chatEnabled") == false) {
+			player.sendMessage(ChatColor.RED + "Your chat is currently disabled, do  " + ChatColor.DARK_RED + "/cm show" + ChatColor.RED + " to enable");
+	        
+	        event.setCancelled(true);
+	        return;
 		}
 		
         if (!chatEnabled) {

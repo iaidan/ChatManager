@@ -58,7 +58,7 @@ public class CommandExe implements CommandExecutor {
 					Main.getInstance().save();
 				}
 			} else if (args[0].toLowerCase().equals("hide") || args[0].toLowerCase().equals("show")) {
-				if (sender instanceof Player && !sender.hasPermission("chatmanager.hideshow") && !sender.isOp()) {
+				if (sender instanceof Player && !sender.hasPermission("chatmanager.chat.hideshow") && !sender.isOp()) {
 					sender.sendMessage(ChatColor.RED + "You do not have permission to access this command.");
 				} else if (!(sender instanceof Player)) {
 					sender.sendMessage(ChatColor.RED + "Command must be done as a player.");
