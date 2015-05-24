@@ -34,10 +34,10 @@ Bukkit API
 <table>
 	<tbody>
 		<tr>
-			<td> <h5>Command</h5> </td>
-			<td> <h5>Function</h5> </td>
-			<td> <h5>Permission</h5> </td>
-			<td> <h5>Default</h5> </td>
+			<td> <h6>Command</h6> </td>
+			<td> <h6>Function</h6> </td>
+			<td> <h6>Permission</h6> </td>
+			<td> <h6>Default</h6> </td>
 		</tr>
 		<tr>
 			<td></td>
@@ -76,37 +76,37 @@ Bukkit API
 			<td> op </td>
 		</tr>
 		<tr>
-			<td></td>
+			<td> <i>/cm [show|hide]</i> </td>
 			<td>toggle if they see the chat or not </td>
 			<td> chatmanager.chat.showhide </td>
 			<td> true </td>
 		</tr>
 		<tr>
-			<td></td>
+			<td> <i>/cm ding</i> </td>
 			<td> toggle if they hear a sound when their mentioned </td>
 			<td> chatmanager.chat.ding </td>
 			<td> true </td>
 		</tr>
 		<tr>
-			<td> <b>/cm mode [enabled|disabled|restricted]</b> </td>
+			<td> <i>/cm mode [enabled|disabled|restricted]</i> </td>
 			<td> Allows a player to change the chats mode &ndash; please note that the two permission nodes below must be used in conjunction with this </td>
 			<td> chatmanager.chat.mode </td>
 			<td> op </td>
 		</tr>
 		<tr>
-			<td> <b>/cm mode [enabled|disabled]</b> </td>
+			<td> <i>/cm mode [enabled|disabled]</i> </td>
 			<td> Enable or disable the whole chat </td>
 			<td> chatmanager.chat.mode.on </td>
 			<td> op </td>
 		</tr>
 		<tr>
-			<td> <b>/cm mode restricted</b> </td>
+			<td> <i>/cm mode restricted</i> </td>
 			<td> Put chat into restricted mode so that only those with permission can speak </td>
 			<td> chatmanager.chat.mode.restricted </td>
 			<td> op </td>
 		</tr>
 		<tr>
-			<td> <b>/cm reload</b> </td>
+			<td> <i>/cm reload</i> </td>
 			<td> Reloads the plugins configurations </td>
 			<td> chatmanager.reload </td>
 			<td> op </td>
