@@ -1,234 +1,225 @@
 <h2>ChatManager</h2>
 <img src="https://api.travis-ci.org/iaidan/ChatManager.svg" alt="" />
-
-
- 
-
-**Dependencies**
-
-Bukkit API
-
- 
-
-**Features**
-
-- Cross-server chat on Lilypad MC
-    - BungeeCord support coming soon
-
-- Manage what formatting players can put in chat
-- Control if chat is abled for the whole server, or for every individual player
-- Range mode to allow you to limit chat to a range around any player
-- Chat channels coming soon
-- Restricted mode that allows only those with permission to talk
-
-**Installation**
-
-1. Move ChatManager.jar into the /plugins folder
-2. Restart Spigot
-3. (Optional) Stop Spigot and edit the /plugins/nameplates/config.yml file
-
-**Commands and Permissions**
-
- 
-
- 
-
-**Command**
-
- 
-
-**Function**
-
- 
-
-**Permission**
-
- 
-
-**Default**
-
- 
-
-permission to speak
-
- 
-
-chatmanager.chat
-
- 
-
-True
-
- 
-
-speak even if chat is in restricted mode
-
- 
-
-chatmanager.chat.override
-
- 
-
-op
-
- 
-
-** **
-
- 
-
-talk outside of the range restrictions
-
- 
-
-chatmanager.ranged.override
-
- 
-
-op
-
- 
-
-use colours in chat (&1-9a-f)
-
- 
-
-chatmanager.chat.colour
-
- 
-
-true
-
- 
-
-** **
-
- 
-
-use formatting   in chat (&l, &l, &m, &n, &o, &r)
-
- 
-
-chatmanager.chat.format
-
- 
-
-op
-
- 
-
-** **
-
- 
-
-use magic (&k) in chat
-
- 
-
-chatmanager.chat.magic
-
- 
-
-op
-
- 
-
-** **
-
- 
-
-toggle if they see the chat or not
-
- 
-
-chatmanager.chat.showhide
-
- 
-
-true
-
- 
-
-** **
-
- 
-
-toggle if they hear a sound when their mentioned
-
- 
-
-chatmanager.chat.ding
-
- 
-
-true
-
- 
-
-**/cm mode [enabled|disabled|restricted]**
-
- 
-
-Allows a player to change the chats mode – please note that the two permission nodes below must be used in conjunction with this
-
- 
-
-chatmanager.chat.mode
-
- 
-
-op
-
- 
-
-**/cm mode [enabled|disabled]**
-
- 
-
-Enable or disable the whole chat
-
- 
-
-chatmanager.chat.mode.on
-
- 
-
-op
-
- 
-
-**/cm mode restricted**
-
- 
-
-Put chat into restricted mode so that only those with permission can speak
-
- 
-
-chatmanager.chat.mode.restricted
-
- 
-
- 
-
- 
-
-**/cm reload**
-
- 
-
-Reloads the plugins configurations
-
- 
-
-chatmanager.reload
-
- 
-
-op
-
- 
-
-**[Source Code](https://github.com/iaidan/ChatManager)**
-
- 
+<p>A simple plugin to help you manage your Minecraft servers chat!</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Dependencies</strong></p>
+
+<p>Bukkit API</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Features</strong></p>
+
+<ul>
+	<li>Cross-server chat on Lilypad MC
+	<ul>
+		<li>BungeeCord support coming soon</li>
+	</ul>
+	</li>
+	<li>Manage what formatting players can put in chat</li>
+	<li>Control if chat is abled for the whole server, or for every individual player</li>
+	<li>Range mode to allow you to limit chat to a range around any player</li>
+	<li>Chat channels coming soon</li>
+	<li>Restricted mode that allows only those with permission to talk</li>
+</ul>
+
+<p><strong>Installation</strong></p>
+
+<ol>
+	<li>Move ChatManager.jar into the /plugins folder</li>
+	<li>Restart Spigot</li>
+	<li>(Optional) Stop Spigot and edit the /plugins/nameplates/config.yml file</li>
+</ol>
+
+<p><strong>Commands and Permissions</strong></p>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="0" cellspacing="0" style="line-height:normal;">
+	<tbody>
+		<tr>
+			<td style="width:109px;">
+			<p><strong>Command</strong></p>
+			</td>
+			<td style="width:248px;">
+			<p><strong>Function</strong></p>
+			</td>
+			<td style="width:178px;">
+			<p><strong>Permission</strong></p>
+			</td>
+			<td style="width:63px;">
+			<p><strong>Default</strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">&nbsp;</td>
+			<td style="width:248px;">
+			<p>permission to speak</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat</p>
+			</td>
+			<td style="width:63px;">
+			<p>True</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">&nbsp;</td>
+			<td style="width:248px;">
+			<p>speak even if chat is in restricted mode</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.override</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p>&nbsp;</p>
+			</td>
+			<td style="width:248px;">
+			<p>talk outside of the range restrictions</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.ranged.override</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">&nbsp;</td>
+			<td style="width:248px;">
+			<p>use colours in chat (&amp;1-9a-f)</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.colour</p>
+			</td>
+			<td style="width:63px;">
+			<p>true</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p>&nbsp;</p>
+			</td>
+			<td style="width:248px;">
+			<p>use formatting&nbsp; &nbsp;in chat (&amp;l, &amp;l, &amp;m, &amp;n, &amp;o, &amp;r)</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.format</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p>&nbsp;</p>
+			</td>
+			<td style="width:248px;">
+			<p>use magic (&amp;k) in chat</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.magic</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p>&nbsp;</p>
+			</td>
+			<td style="width:248px;">
+			<p>toggle if they see the chat or not</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.showhide</p>
+			</td>
+			<td style="width:63px;">
+			<p>true</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p>&nbsp;</p>
+			</td>
+			<td style="width:248px;">
+			<p>toggle if they hear a sound when their mentioned</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.ding</p>
+			</td>
+			<td style="width:63px;">
+			<p>true</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p><strong>/cm mode [enabled|disabled|restricted]</strong></p>
+			</td>
+			<td style="width:248px;">
+			<p>Allows a player to change the chats mode &ndash; please note that the two permission nodes below must be used in conjunction with this</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.mode</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p><strong>/cm mode [enabled|disabled]</strong></p>
+			</td>
+			<td style="width:248px;">
+			<p>Enable or disable the whole chat</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.mode.on</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p><strong>/cm mode restricted</strong></p>
+			</td>
+			<td style="width:248px;">
+			<p>Put chat into restricted mode so that only those with permission can speak</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.chat.mode.restricted</p>
+			</td>
+			<td style="width:63px;">
+			<p>&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:109px;">
+			<p><strong>/cm reload</strong></p>
+			</td>
+			<td style="width:248px;">
+			<p>Reloads the plugins configurations</p>
+			</td>
+			<td style="width:178px;">
+			<p>chatmanager.reload</p>
+			</td>
+			<td style="width:63px;">
+			<p>op</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p><strong><a href="https://github.com/iaidan/ChatManager">Source Code</a></strong></p>
+
+<p>&nbsp;</p>
