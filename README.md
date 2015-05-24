@@ -1,5 +1,6 @@
 <h2>ChatManager</h2>
 <img src="https://api.travis-ci.org/iaidan/ChatManager.svg" alt="" />
+<br />
 A simple plugin to help you manage your Minecraft servers chat!
 
 <h3>Dependencies</h3>
