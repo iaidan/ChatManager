@@ -1,16 +1,12 @@
 <h2>ChatManager</h2>
 <img src="https://api.travis-ci.org/iaidan/ChatManager.svg" alt="" />
-<p>A simple plugin to help you manage your Minecraft servers chat!</p>
+A simple plugin to help you manage your Minecraft servers chat!
 
-<p>&nbsp;</p>
+<h3>Dependencies</h3>
 
-<p><strong>Dependencies</strong></p>
+Bukkit API
 
-<p>Bukkit API</p>
-
-<p>&nbsp;</p>
-
-<p><strong>Features</strong></p>
+<h3>Features</h3>
 
 <ul>
 	<li>Cross-server chat on Lilypad MC
@@ -25,7 +21,7 @@
 	<li>Restricted mode that allows only those with permission to talk</li>
 </ul>
 
-<p><strong>Installation</strong></p>
+<h3>Installation</h3>
 
 <ol>
 	<li>Move ChatManager.jar into the /plugins folder</li>
@@ -33,193 +29,91 @@
 	<li>(Optional) Stop Spigot and edit the /plugins/nameplates/config.yml file</li>
 </ol>
 
-<p><strong>Commands and Permissions</strong></p>
+<h3>Commands and Permissions</h3>
 
-<p>&nbsp;</p>
-
-<table border="1" cellpadding="0" cellspacing="0" style="line-height:normal;">
+<table>
 	<tbody>
 		<tr>
-			<td style="width:109px;">
-			<p><strong>Command</strong></p>
-			</td>
-			<td style="width:248px;">
-			<p><strong>Function</strong></p>
-			</td>
-			<td style="width:178px;">
-			<p><strong>Permission</strong></p>
-			</td>
-			<td style="width:63px;">
-			<p><strong>Default</strong></p>
-			</td>
+			<td> <h5>Command</h5> </td>
+			<td> <h5>Function</h5> </td>
+			<td> <h5>Permission</h5> </td>
+			<td> <h5>Default</h5> </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">&nbsp;</td>
-			<td style="width:248px;">
-			<p>permission to speak</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat</p>
-			</td>
-			<td style="width:63px;">
-			<p>True</p>
-			</td>
+			<td></td>
+			<td> permission to speak </td>
+			<td> chatmanager.chat </td>
+			<td> True </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">&nbsp;</td>
-			<td style="width:248px;">
-			<p>speak even if chat is in restricted mode</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.override</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td></td>
+			<td> speak even if chat is in restricted mode </td>
+			<td> chatmanager.chat.override </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p>&nbsp;</p>
-			</td>
-			<td style="width:248px;">
-			<p>talk outside of the range restrictions</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.ranged.override</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td></td>
+			<td> talk outside of the range restrictions </td>
+			<td> chatmanager.ranged.override </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">&nbsp;</td>
-			<td style="width:248px;">
-			<p>use colours in chat (&amp;1-9a-f)</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.colour</p>
-			</td>
-			<td style="width:63px;">
-			<p>true</p>
-			</td>
+			<td></td>
+			<td> use colours in chat (&amp;1-9a-f)</td>
+			<td> chatmanager.chat.colour </td>
+			<td> true </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p>&nbsp;</p>
-			</td>
-			<td style="width:248px;">
-			<p>use formatting&nbsp; &nbsp;in chat (&amp;l, &amp;l, &amp;m, &amp;n, &amp;o, &amp;r)</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.format</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td> </td>
+			<td> use formatting&nbsp; &nbsp;in chat (&amp;l, &amp;l, &amp;m, &amp;n, &amp;o, &amp;r)</td>
+			<td> chatmanager.chat.format </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p>&nbsp;</p>
-			</td>
-			<td style="width:248px;">
-			<p>use magic (&amp;k) in chat</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.magic</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td> </td>
+			<td> use magic (&amp;k) in chat </td>
+			<td> chatmanager.chat.magic </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p>&nbsp;</p>
-			</td>
-			<td style="width:248px;">
-			<p>toggle if they see the chat or not</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.showhide</p>
-			</td>
-			<td style="width:63px;">
-			<p>true</p>
-			</td>
+			<td></td>
+			<td>toggle if they see the chat or not </td>
+			<td> chatmanager.chat.showhide </td>
+			<td> true </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p>&nbsp;</p>
-			</td>
-			<td style="width:248px;">
-			<p>toggle if they hear a sound when their mentioned</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.ding</p>
-			</td>
-			<td style="width:63px;">
-			<p>true</p>
-			</td>
+			<td></td>
+			<td> toggle if they hear a sound when their mentioned </td>
+			<td> chatmanager.chat.ding </td>
+			<td> true </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p><strong>/cm mode [enabled|disabled|restricted]</strong></p>
-			</td>
-			<td style="width:248px;">
-			<p>Allows a player to change the chats mode &ndash; please note that the two permission nodes below must be used in conjunction with this</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.mode</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td> <b>/cm mode [enabled|disabled|restricted]</b> </td>
+			<td> Allows a player to change the chats mode &ndash; please note that the two permission nodes below must be used in conjunction with this </td>
+			<td> chatmanager.chat.mode </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p><strong>/cm mode [enabled|disabled]</strong></p>
-			</td>
-			<td style="width:248px;">
-			<p>Enable or disable the whole chat</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.mode.on</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td> <b>/cm mode [enabled|disabled]</b> </td>
+			<td> Enable or disable the whole chat </td>
+			<td> chatmanager.chat.mode.on </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p><strong>/cm mode restricted</strong></p>
-			</td>
-			<td style="width:248px;">
-			<p>Put chat into restricted mode so that only those with permission can speak</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.chat.mode.restricted</p>
-			</td>
-			<td style="width:63px;">
-			<p>&nbsp;</p>
-			</td>
+			<td> <b>/cm mode restricted</b> </td>
+			<td> Put chat into restricted mode so that only those with permission can speak </td>
+			<td> chatmanager.chat.mode.restricted </td>
+			<td> op </td>
 		</tr>
 		<tr>
-			<td style="width:109px;">
-			<p><strong>/cm reload</strong></p>
-			</td>
-			<td style="width:248px;">
-			<p>Reloads the plugins configurations</p>
-			</td>
-			<td style="width:178px;">
-			<p>chatmanager.reload</p>
-			</td>
-			<td style="width:63px;">
-			<p>op</p>
-			</td>
+			<td> <b>/cm reload</b> </td>
+			<td> Reloads the plugins configurations </td>
+			<td> chatmanager.reload </td>
+			<td> op </td>
 		</tr>
 	</tbody>
 </table>
 
-<p>&nbsp;</p>
+<h3><a href="https://github.com/iaidan/ChatManager">Source Code</a></h3>
 
-<p><strong><a href="https://github.com/iaidan/ChatManager">Source Code</a></strong></p>
 
-<p>&nbsp;</p>
