@@ -26,4 +26,4 @@ chatEnable: true
 restricted: false
 
 # Debug mode
-debug: true
+debug: true 
